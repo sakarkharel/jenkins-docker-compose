@@ -18,7 +18,7 @@ pipeline{
             }
 
         }
-        stage("Start COntainer"){
+        stage("Start Container"){
             steps {
                 sh 'sudo docker compose up -d --np-color --wait'
                 sh 'sudo docker compose ps'
