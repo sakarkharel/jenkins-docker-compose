@@ -1,0 +1,20 @@
+version: '3'
+
+services:
+  web:
+    image: nginx:latest
+    ports: 
+      - "82:80"
+    volumes:
+      - ./:/usr/share/nginx/html  # This will map the whole docker_projects folder to the Nginx container
+
+  db:
+    image: mysql:5.7
+    environment:
+      - MYSQL_ROOT_PASSWORD=mysecretpassword
+      - MYSQL_DATABASE=mydb
+    volumes:
+      - db_data:/var/lib/mysql
+
+volumes:
+  db_data:
