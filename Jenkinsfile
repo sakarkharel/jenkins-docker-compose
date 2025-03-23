@@ -12,7 +12,19 @@ pipeline{
                 '''
             }
         }
+        stage("Prune Docker Data"){
+            steps { 
+                sh 'docker system prune -a --volumes -f'
+            }
 
+        }
+        stage("Start COntainer"){
+            steps {
+                sh 'docker compose up -d --np-color --wait'
+                sh 'docker compose ps'
+            }
+        }
+        
     }
 
 }
